@@ -2,10 +2,10 @@ import { Suspense } from "react";
 import Booking from "./Booking";
 import { getBookings } from "../supabase";
 import Loading from "../(components)/Loading";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Filters from "./Filters";
 import { logOut } from "@/lib/actions";
+import SignOut from "./SignOut";
 
 export const revalidate = 0;
 
@@ -18,11 +18,8 @@ const Page = async ({ searchParams }) => {
     <div className=" container py-2">
       <div className="pb-2 border-b-4 border-gray-700 flex justify-between items-center">
         <h2 className="text-xl ">Bookings</h2>
-        <Button>
-          <Link href="/">home</Link>
-        </Button>
         <form action={logOut}>
-          <Button>Sign out</Button>
+          <SignOut type="submit" />
         </form>
       </div>
       <Filters />
