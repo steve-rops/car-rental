@@ -1,18 +1,34 @@
 import { login } from "@/lib/actions";
+import SubmitButton from "./SubmitButton";
 
 export default function Login() {
   return (
-    <div className="w-full flex justify-center ">
-      <form className="flex flex-col p-2 border rounded-xl">
-        <div>
+    <div className="flex justify-center py-10 ">
+      <form
+        action={login}
+        className="flex flex-col gap-2 p-2 border rounded-xl"
+      >
+        <div className="flex justify-between gap-2 items-center">
           <label htmlFor="email">Email:</label>
-          <input id="email" name="email" type="email" required />
+          <input
+            className=" border border-gray-300 p-1 rounded-md"
+            id="email"
+            name="email"
+            type="email"
+            required
+          />
         </div>
-        <div>
+        <div className=" flex justify-between gap-2 items-center">
           <label htmlFor="password">Password:</label>
-          <input id="password" name="password" type="password" required />
+          <input
+            className="border border-gray-300 p-1 rounded-md"
+            id="password"
+            name="password"
+            type="password"
+            required
+          />
         </div>
-        <button formAction={login}>Log in</button>
+        <SubmitButton type="submit" />
       </form>
     </div>
   );
