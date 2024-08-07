@@ -1,53 +1,26 @@
+import { Button } from "@/components/ui/button";
 import { getBookingById } from "../supabase";
+import Link from "next/link";
+import { Suspense } from "react";
+import Loading from "../(components)/Loading";
+import DriverInfo from "./DriverInfo";
 
-export default async function Page({ searchParams }) {
+export default function Page({ searchParams }) {
   const { bookingId } = searchParams;
-
-  const { data: booking } = await getBookingById(bookingId);
-  console.log(booking);
 
   return (
     <div className="container py-10">
-      <h3 className="text-3xl">Booking Information: </h3>
-      <div className="bg-gray-300 p-2 border rounded-lg grid grid-cols-3 items-center">
-        <div>
-          <p>
-            Name: <span className="text-lg font-bold">{booking.name}</span>
-          </p>
-          <p>
-            Email: <span className="text-lg font-bold">{booking.email}</span>
-          </p>
-        </div>
-
-        <div>
-          <p>
-            Booking starts at:{" "}
-            <span className="text-lg font-bold bg-green-300 rounded-md">
-              {booking.startDate}
-            </span>
-          </p>
-          <p>
-            Booking ends at:{" "}
-            <span className="text-lg font-bold bg-red-300 rounded-md">
-              {booking.endDate}
-            </span>
-          </p>
-        </div>
-
-        <div>
-          <p>
-            Status:{" "}
-            {booking.status === "Awaiting Confirmation" ? (
-              <span className="bg-yellow-400 text-lg font-bold rounded-md">
-                Awaiting Confirmation
-              </span>
-            ) : (
-              <span className="bg-green-600 text-lg font-bold">Confirmed</span>
-            )}
-          </p>
-        </div>
+      <div className="flex justify-between pb-4">
+        <h3 className="text-3xl">Booking Information: </h3>
+        <Link href="/">
+          <Button>Make a New Booking</Button>
+        </Link>
       </div>
-      <h4 className="text-2xl">Car Information</h4>
+      <Suspense fallback={<Loading />}>
+        <DriverInfo bookingId={bookingId} />
+
+        <h4 className="text-2xl">Car Information</h4>
+      </Suspense>
     </div>
   );
 }
