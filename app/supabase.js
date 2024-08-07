@@ -31,6 +31,19 @@ export async function getBookings(status) {
   }
 }
 
+export async function getBookingById(id) {
+  const { data: booking, error } = await supabase
+    .from("bookings")
+    .select("*")
+    .eq("id", id);
+
+  const [data] = booking;
+
+  if (error) throw new Error(error.message);
+
+  return { data };
+}
+
 export async function getSpecificCar(id) {
   const { data, error } = await supabase.from("cars").select("*").eq("id", id);
 
@@ -69,9 +82,9 @@ export async function getAvailableCars(startDate, endDate) {
 }
 
 export async function makeNewBooking(details) {
-  const { days, carId, start, end, costPerDay, status } = details;
+  const { days, carId, start, end, costPerDay, status, name, email } = details;
 
-  const { error } = await supabase
+  const { data: bookings, error } = await supabase
     .from("bookings")
     .insert([
       {
@@ -80,11 +93,17 @@ export async function makeNewBooking(details) {
         endDate: end,
         status,
         totalCost: days * costPerDay,
+        name,
+        email,
       },
     ])
     .select();
 
+  const [data] = bookings;
+
   if (error) throw new Error(error.message);
+
+  return { data, error };
 }
 
 // carId

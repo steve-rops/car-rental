@@ -1,13 +1,13 @@
 "use client";
 
 import DatePicker from "./DatePicker";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useDatesANDLocation } from "../(context)/dateANDLocationContext";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { format, isPast } from "date-fns";
 import { useRouter } from "next/navigation";
+import SubmitButton from "./SubmitButton";
 
 const AvailabilitySearch = () => {
   const router = useRouter();
@@ -115,10 +115,9 @@ const AvailabilitySearch = () => {
           )}
         </div>
 
+        {/* SUBMIT BUTTON */}
         <div className="w-full flex justify-center">
-          <Button className="" type="submit">
-            search
-          </Button>
+          <SubmitButton />
         </div>
       </div>
     </form>

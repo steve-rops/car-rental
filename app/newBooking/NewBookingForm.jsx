@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { bookCar } from "@/lib/actions";
 import { differenceInDays } from "date-fns";
+import SubmitBookingButton from "./SubmitBookingButton";
 
 export default function NewBookingForm({
   costPerDay,
@@ -77,7 +78,7 @@ export default function NewBookingForm({
           />
         </div>
 
-        <Button type="submit">submit</Button>
+        <SubmitBookingButton />
       </form>
     </div>
   );
