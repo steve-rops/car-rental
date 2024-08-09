@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { differenceInDays, format } from "date-fns";
 
 const Booking = async ({ booking }) => {
-  const { car } = await getSpecificCar(booking.carId);
+  const { data: car } = await getSpecificCar(booking.carId);
   const days = differenceInDays(
     new Date(booking.endDate),
     new Date(booking.startDate)
@@ -15,18 +15,18 @@ const Booking = async ({ booking }) => {
       <div className=" relative aspect-square size-32  ">
         <Image
           className="rounded-md"
-          src={car.imageUrl}
+          src={car?.imageUrl}
           fill
-          alt="an image of a car"
+          alt="an image of a car?"
         />
       </div>
       <div>
         <div className="flex justify-between">
           <div>
-            <h3 className="text-sm font-semibold">{car.make}</h3>
-            <h4 className="text-sm">{car.model}</h4>
+            <h3 className="text-sm font-semibold">{car?.make}</h3>
+            <h4 className="text-sm">{car?.model}</h4>
           </div>
-          <p className="text-sm">car id:{car.id}</p>
+          <p className="text-sm">car id:{car?.id}</p>
         </div>
 
         <hr />
@@ -66,14 +66,14 @@ const Booking = async ({ booking }) => {
         <hr />
 
         <div>
-          <p className="text-sm">Cost per day: {car.costPerDay} </p>
+          <p className="text-sm">Cost per day: {car?.costPerDay} </p>
         </div>
 
         <hr />
 
         <div>
           <div className="font-semibold">
-            Total cost: <span>{days * car.costPerDay} $</span>
+            Total cost: <span>{days * car?.costPerDay} $</span>
           </div>
         </div>
       </div>

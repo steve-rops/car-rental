@@ -54,7 +54,6 @@ export async function getSpecificCar(id) {
     .from("cars")
     .select("*")
     .eq("id", id);
-
   const [data] = car;
 
   if (error) throw new Error(error.message);

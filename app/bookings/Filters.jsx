@@ -1,38 +1,30 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
-export default function Filters() {
-  const router = useRouter();
-  const status = useSearchParams().get("status") ?? "all";
-
-  const handleClick = (status) => {
-    router.replace(`/bookings?status=${status}`);
-  };
-
+export default function Filters({ status }) {
   return (
     <div className="flex gap-1 py-2">
-      <Button
-        variant={`${status === "all" ? "default" : "outline"}`}
-        onClick={() => handleClick("all")}
-      >
-        All
-      </Button>
-      <Button
-        variant={`${status === "Confirmed" ? "default" : "outline"}`}
-        onClick={() => handleClick("Confirmed")}
-      >
-        Confirmed
-      </Button>
-      <Button
-        variant={`${
-          status === "Awaiting Confirmation" ? "default" : "outline"
-        }`}
-        onClick={() => handleClick("Awaiting Confirmation")}
-      >
-        Awaiting Confirmation
-      </Button>
+      <Link href="/bookings?status=all">
+        <Button variant={`${status === "all" ? "default" : "outline"}`}>
+          All
+        </Button>
+      </Link>
+
+      <Link href="/bookings?status=Confirmed">
+        <Button variant={`${status === "Confirmed" ? "default" : "outline"}`}>
+          Confirmed
+        </Button>
+      </Link>
+
+      <Link href="/bookings?status=Awaiting%20Confirmation">
+        <Button
+          variant={`${
+            status === "Awaiting Confirmation" ? "default" : "outline"
+          }`}
+        >
+          Awaiting Confirmation
+        </Button>
+      </Link>
     </div>
   );
 }
