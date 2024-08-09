@@ -28,7 +28,6 @@ const AvailabilitySearch = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    // console.log(data);
     router.push(
       `/checkAvailability?start=${format(
         startDate,

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default async function Page({ searchParams }) {
   const { carId, start, end, location } = searchParams;
-  const { car } = await getSpecificCar(carId);
+  const { data: car } = await getSpecificCar(carId);
   const days = differenceInDays(new Date(end), new Date(start));
 
   return (

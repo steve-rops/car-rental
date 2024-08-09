@@ -12,6 +12,13 @@ export async function getCars() {
   return { cars };
 }
 
+export async function getAllBookings() {
+  const { data, error } = await supabase.from("bookings").select("*");
+  if (error) throw new Error(error.message);
+
+  return { data };
+}
+
 export async function getBookings(status) {
   if (status === "all") {
     const { data, error: fetchError } = await supabase
@@ -32,26 +39,27 @@ export async function getBookings(status) {
 }
 
 export async function getBookingById(id) {
-  const { data: booking, error } = await supabase
+  const { data: bookings, error } = await supabase
     .from("bookings")
     .select("*")
     .eq("id", id);
-
-  const [data] = booking;
-
+  const [data] = bookings;
   if (error) throw new Error(error.message);
 
   return { data };
 }
 
 export async function getSpecificCar(id) {
-  const { data, error } = await supabase.from("cars").select("*").eq("id", id);
+  const { data: car, error } = await supabase
+    .from("cars")
+    .select("*")
+    .eq("id", id);
 
-  const [car] = data;
+  const [data] = car;
 
   if (error) throw new Error(error.message);
 
-  return { car };
+  return { data };
 }
 
 export async function getAvailableCars(startDate, endDate) {
@@ -104,6 +112,17 @@ export async function makeNewBooking(details) {
   if (error) throw new Error(error.message);
 
   return { data, error };
+}
+
+export async function getBookingsForASpecificCar(carId) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*")
+    .eq("carId", carId);
+
+  if (error) throw new Error(error.message);
+
+  return { data };
 }
 
 // carId
