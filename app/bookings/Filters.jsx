@@ -1,30 +1,47 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState, useOptimistic } from "react";
 
 export default function Filters({ status }) {
+  const router = useRouter();
+  const [optimisticState, addOptimistic] = useOptimistic(
+    status,
+    (state, optimisticValue) => {
+      return optimisticValue;
+    }
+  );
+
+  const handleClick = (status) => {
+    router.replace(`bookings?status=${status}`);
+    addOptimistic(status);
+  };
+
   return (
     <div className="flex gap-1 py-2">
-      <Link href="/bookings?status=all">
-        <Button variant={`${status === "all" ? "default" : "outline"}`}>
-          All
-        </Button>
-      </Link>
+      <Button
+        onClick={() => handleClick("All")}
+        variant={`${optimisticState === "All" ? "default" : "outline"}`}
+      >
+        All
+      </Button>
 
-      <Link href="/bookings?status=Confirmed">
-        <Button variant={`${status === "Confirmed" ? "default" : "outline"}`}>
-          Confirmed
-        </Button>
-      </Link>
+      <Button
+        onClick={() => handleClick("Confirmed")}
+        variant={`${optimisticState === "Confirmed" ? "default" : "outline"}`}
+      >
+        Confirmed
+      </Button>
 
-      <Link href="/bookings?status=Awaiting%20Confirmation">
-        <Button
-          variant={`${
-            status === "Awaiting Confirmation" ? "default" : "outline"
-          }`}
-        >
-          Awaiting Confirmation
-        </Button>
-      </Link>
+      <Button
+        onClick={() => handleClick("Awaiting Confirmation")}
+        variant={`${
+          optimisticState === "Awaiting Confirmation" ? "default" : "outline"
+        }`}
+      >
+        Awaiting Confirmation
+      </Button>
     </div>
   );
 }

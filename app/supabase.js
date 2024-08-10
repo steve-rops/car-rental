@@ -20,7 +20,7 @@ export async function getAllBookings() {
 }
 
 export async function getBookings(status) {
-  if (status === "all") {
+  if (status === "All") {
     const { data, error: fetchError } = await supabase
       .from("bookings")
       .select("*");

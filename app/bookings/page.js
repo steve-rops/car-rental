@@ -1,18 +1,12 @@
 import { Suspense } from "react";
-import Booking from "./Booking";
-import { getBookings } from "../supabase";
 import Loading from "../(components)/Loading";
-import Link from "next/link";
 import Filters from "./Filters";
 import { logOut } from "@/lib/actions";
 import SignOut from "./SignOut";
+import Bookings from "./Bookings";
 
-export const revalidate = 0;
-
-const Page = async ({ searchParams }) => {
+const Page = ({ searchParams }) => {
   const status = searchParams.status ?? "all";
-
-  const { data: bookings } = await getBookings(status);
 
   return (
     <div className=" container py-2">
@@ -25,17 +19,9 @@ const Page = async ({ searchParams }) => {
 
       <Filters status={status} />
 
-      {bookings.length === 0 && <p>There are no Bookings yet here</p>}
-      {bookings.length !== 0 && (
-        <Suspense fallback={<Loading />} key={bookings?.[0].id}>
-          <div className="py-2 grid grid-cols-2 w-full gap-2 place-items-center md:grid-cols-3 lg:grid-cols-4">
-            {bookings.length &&
-              bookings.map((booking) => (
-                <Booking key={booking.id} booking={booking} />
-              ))}
-          </div>
-        </Suspense>
-      )}
+      <Suspense fallback={<Loading />} key={searchParams.status}>
+        <Bookings status={status} />
+      </Suspense>
     </div>
   );
 };
