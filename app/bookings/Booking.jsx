@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getSpecificCar } from "../supabase";
 import { cn } from "@/lib/utils";
 import { differenceInDays, format } from "date-fns";
+import { Check, X } from "lucide-react";
 
 const Booking = async ({ booking }) => {
   const { data: car } = await getSpecificCar(booking.carId);
@@ -12,13 +13,22 @@ const Booking = async ({ booking }) => {
 
   return (
     <div className=" rounded-lg border-gray-400 border p-2 w-full flex flex-col ">
-      <div className=" relative aspect-square size-32  ">
-        <Image
-          className="rounded-md"
-          src={car?.imageUrl}
-          fill
-          alt="an image of a car?"
-        />
+      <div className="flex justify-between">
+        <div className=" relative aspect-square size-32  ">
+          <Image
+            className="rounded-md"
+            src={car?.imageUrl}
+            fill
+            alt="an image of a car?"
+          />
+        </div>
+
+        <div>
+          <div className="flex gap-2 hover:cursor-pointer">
+            <Check className="text-green-500 border rounded-md" />
+            <X className="text-red-500 border rounded-md" />
+          </div>
+        </div>
       </div>
       <div>
         <div className="flex justify-between">

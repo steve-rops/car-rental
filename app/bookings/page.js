@@ -4,9 +4,11 @@ import Filters from "./Filters";
 import { logOut } from "@/lib/actions";
 import SignOut from "./SignOut";
 import Bookings from "./Bookings";
+import { redirect } from "next/navigation";
 
 const Page = ({ searchParams }) => {
-  const status = searchParams.status ?? "all";
+  const status = searchParams.status || "All";
+  if (!searchParams.status) redirect("/bookings?status=All");
 
   return (
     <div className=" container py-2">
