@@ -3,6 +3,7 @@ import { getSpecificCar } from "../supabase";
 import { cn } from "@/lib/utils";
 import { differenceInDays, format } from "date-fns";
 import { Check, X } from "lucide-react";
+import AcceptOrCancel from "./AcceptOrCancel";
 
 const Booking = async ({ booking }) => {
   const { data: car } = await getSpecificCar(booking.carId);
@@ -23,12 +24,7 @@ const Booking = async ({ booking }) => {
           />
         </div>
 
-        <div>
-          <div className="flex gap-2 hover:cursor-pointer">
-            <Check className="text-green-500 border rounded-md" />
-            <X className="text-red-500 border rounded-md" />
-          </div>
-        </div>
+        <AcceptOrCancel />
       </div>
       <div>
         <div className="flex justify-between">

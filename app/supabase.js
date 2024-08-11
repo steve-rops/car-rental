@@ -124,6 +124,11 @@ export async function getBookingsForASpecificCar(carId) {
   return { data };
 }
 
+export async function updateBooking(type) {
+  if (type === "approve") console.log("approved");
+  if (type === "cancel") console.log("canceled");
+}
+
 // carId
 // totalCost
 // status
