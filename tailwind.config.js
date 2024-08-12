@@ -17,6 +17,7 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: { heroImage: "url('/public/cartoon-car.jpeg')" },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

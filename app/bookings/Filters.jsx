@@ -2,10 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { useState, useOptimistic } from "react";
+import { useState, useOptimistic, useTransition } from "react";
 
 export default function Filters({ status }) {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const [optimisticState, addOptimistic] = useOptimistic(
     status,
     (state, optimisticValue) => {
@@ -15,7 +16,9 @@ export default function Filters({ status }) {
 
   const handleClick = (status) => {
     router.replace(`bookings?status=${status}`);
-    addOptimistic(status);
+    startTransition(() => {
+      addOptimistic(status);
+    });
   };
 
   return (
