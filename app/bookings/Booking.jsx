@@ -24,7 +24,7 @@ const Booking = async ({ booking }) => {
           />
         </div>
 
-        <AcceptOrCancel />
+        <AcceptOrCancel status={booking.status} bookingId={booking.id} />
       </div>
       <div>
         <div className="flex justify-between">

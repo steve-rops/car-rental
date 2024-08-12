@@ -6,6 +6,8 @@ import SignOut from "./SignOut";
 import Bookings from "./Bookings";
 import { redirect } from "next/navigation";
 
+export const revalidate = 0;
+
 const Page = ({ searchParams }) => {
   const status = searchParams.status || "All";
   if (!searchParams.status) redirect("/bookings?status=All");

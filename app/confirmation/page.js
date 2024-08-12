@@ -5,6 +5,8 @@ import { Suspense } from "react";
 import Loading from "../(components)/Loading";
 import DriverInfo from "./DriverInfo";
 
+export const revalidate = 0;
+
 export default function Page({ searchParams }) {
   const { bookingId } = searchParams;
 

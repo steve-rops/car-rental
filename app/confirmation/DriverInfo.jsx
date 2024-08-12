@@ -36,7 +36,9 @@ export default async function DriverInfo({ bookingId }) {
               Awaiting Confirmation
             </span>
           ) : (
-            <span className="bg-green-600 text-lg font-bold">Confirmed</span>
+            <span className="bg-green-300 text-lg font-bold rounded-md">
+              Confirmed
+            </span>
           )}
         </p>
       </div>
