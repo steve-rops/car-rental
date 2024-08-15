@@ -13,8 +13,8 @@ const Booking = async ({ booking }) => {
   );
 
   return (
-    <div className=" rounded-lg border-gray-400 border p-2 w-full flex flex-col ">
-      <div className="flex justify-between">
+    <div className="self-stretch rounded-lg border-gray-400 border p-2 w-full md:flex md:flex-col ">
+      <div className="md:flex md:justify-between py-2">
         <div className=" relative aspect-square size-32  ">
           <Image
             className="rounded-md"

@@ -11,9 +11,9 @@ export default function Page({ searchParams }) {
   const { bookingId } = searchParams;
 
   return (
-    <div className="container py-10">
+    <div className="md:container px-4 py-10">
       <div className="flex justify-between pb-4">
-        <h3 className="text-3xl">Booking Information: </h3>
+        <h3 className=" text-lg md:text-3xl">Booking Information: </h3>
         <Link href="/">
           <Button>Make a New Booking</Button>
         </Link>
@@ -21,7 +21,7 @@ export default function Page({ searchParams }) {
       <Suspense fallback={<Loading />}>
         <DriverInfo bookingId={bookingId} />
 
-        <h4 className="text-2xl">Car Information</h4>
+        {/* <h4 className="md:text-2xl text-lg ">Car Information</h4> */}
       </Suspense>
     </div>
   );

@@ -22,10 +22,10 @@ export default function NewBookingForm({
   });
 
   return (
-    <div className="w-full flex justify-center py-2">
+    <div className="md:w-full flex md:justify-center py-2">
       <form
         action={bookCarWithAllData}
-        className="w-[30%] flex flex-col gap-4 px-4"
+        className="md:w-[30%] w-[100%] flex flex-col  gap-4 md:px-4"
       >
         <div className="flex w-full justify-between gap-2 items-center">
           <label htmlFor="dates">dates:</label>

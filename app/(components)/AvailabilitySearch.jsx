@@ -49,7 +49,7 @@ const AvailabilitySearch = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid md:grid-cols-[40%,1fr,1fr,1fr] mx-auto w-[90%] items-center border rounded-lg md:divide-x p-2">
+      <div className="grid md:grid-cols-[25%,1fr,1fr,1fr] mx-auto w-[90%] items-center border rounded-lg md:divide-x p-2">
         <div className="flex flex-col">
           {/* location selection */}
           <div className="p-2 flex flex-col items-start">

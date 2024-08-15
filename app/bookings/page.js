@@ -15,7 +15,7 @@ const Page = ({ searchParams }) => {
   return (
     <div className=" container py-2">
       <div className="pb-2 border-b-4 border-gray-700 flex justify-between items-center">
-        <h2 className="text-xl ">Bookings</h2>
+        <h2 className="text-lg ">Bookings</h2>
         <form action={logOut}>
           <SignOut type="submit" />
         </form>

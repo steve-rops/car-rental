@@ -3,7 +3,7 @@ import { getBookingById } from "../supabase";
 export default async function DriverInfo({ bookingId }) {
   const { data: booking } = await getBookingById(bookingId);
   return (
-    <div className="bg-gray-300 p-2 border rounded-lg grid grid-cols-3 items-center">
+    <div className="bg-gray-300 p-2 border rounded-lg md:grid md:grid-cols-3 items-center">
       <div>
         <p>
           Name: <span className="text-lg font-bold">{booking.name}</span>

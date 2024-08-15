@@ -22,7 +22,7 @@ export default function Filters({ status }) {
   };
 
   return (
-    <div className="flex gap-1 py-2">
+    <div className="flex gap-1 py-2 overflow-x-auto">
       <Button
         onClick={() => handleClick("All")}
         variant={`${optimisticState === "All" ? "default" : "outline"}`}

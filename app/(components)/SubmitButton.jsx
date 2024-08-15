@@ -7,7 +7,7 @@ export default function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button disabled={pending} type="submit">
+    <Button className="flex-1 md:flex-none" disabled={pending} type="submit">
       {pending ? <Loading /> : "search"}
     </Button>
   );
